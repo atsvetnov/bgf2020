@@ -4,7 +4,7 @@ https://metanit.com/sharp/aspnet5/16.4.php
 
 //Add-Migration AddAuthor
 //Update-Database
-//Script-Migration
+//Script-Migration 
 
 
 Script-Migration --context MvcMovieContext
