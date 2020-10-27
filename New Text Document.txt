@@ -1,0 +1,31 @@
+https://www.c-sharpcorner.com/article/authentication-and-authorization-in-asp-net-core-web-api-with-json-web-tokens/
+https://metanit.com/sharp/aspnet5/16.2.php
+https://metanit.com/sharp/aspnet5/16.4.php
+
+//Add-Migration AddAuthor
+//Update-Database
+//Script-Migration
+
+
+Script-Migration --context MvcMovieContext
+
+https://docs.microsoft.com/ru-ru/aspnet/mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-controller
+https://docs.microsoft.com/ru-ru/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-3.1&tabs=visual-studio
+https://docs.microsoft.com/ru-ru/aspnet/core/tutorials/first-mvc-app/adding-view?view=aspnetcore-3.1&tabs=visual-studio
+https://docs.microsoft.com/ru-ru/aspnet/core/tutorials/first-mvc-app/adding-model?view=aspnetcore-3.1&tabs=visual-studio
+https://docs.microsoft.com/ru-ru/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio
+https://docs.microsoft.com/en-us/nuget/consume-packages/package-references-in-project-files
+https://docs.microsoft.com/ru-ru/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio
+
+https://docs.microsoft.com/ru-ru/ef/core/managing-schemas/migrations/applying?tabs=vs
+
+Авторизация и аутентификация в MVC vs2019
+https://portal.tpu.ru/SHARED/m/MARTYNOVYAA/study_work/stud_practice2/tasks/%D0%90%D0%B2%D1%82%D0%BE%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B8%20%D0%B0%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D1%8F.pdf
+https://docs.microsoft.com/ru-ru/aspnet/core/security/authentication/accconfirm?view=aspnetcore-3.1&tabs=visual-studio
+
+atsvetnov@atalan.net
+alexander.tsvetnov@gmail.com
+Ats$314271
+hash in app: AQAAAAEAACcQAAAAEKG4KG3HobHdOjNvqeNDQHP+n2ljdi9WNJh0CLZ4dQXjnQI3RXXFni5AmtUiDyJpLA==
+Ats314271tsa172413stAepi
+
