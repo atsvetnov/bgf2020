@@ -4,7 +4,7 @@ https://metanit.com/sharp/aspnet5/16.4.php
 
 //Add-Migration AddAuthor
 //Update-Database
-//Script-Migration 
+//Script-Migration
 
 
 Script-Migration --context MvcMovieContext
@@ -19,7 +19,7 @@ https://docs.microsoft.com/ru-ru/aspnet/core/tutorials/first-web-api?view=aspnet
 
 https://docs.microsoft.com/ru-ru/ef/core/managing-schemas/migrations/applying?tabs=vs
 
-Авторизация и аутентификация в MVC vs2019
+ГЂГўГІГ®Г°ГЁГ§Г Г¶ГЁГї ГЁ Г ГіГІГҐГ­ГІГЁГґГЁГЄГ Г¶ГЁГї Гў MVC vs2019
 https://portal.tpu.ru/SHARED/m/MARTYNOVYAA/study_work/stud_practice2/tasks/%D0%90%D0%B2%D1%82%D0%BE%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B8%20%D0%B0%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D1%8F.pdf
 https://docs.microsoft.com/ru-ru/aspnet/core/security/authentication/accconfirm?view=aspnetcore-3.1&tabs=visual-studio
 
