@@ -69,3 +69,4 @@ C:\AtalanProjects\bgf2020\bgfadmin\obj\Debug\netcoreapp3.1\staticwebassets\bgfad
 C:\AtalanProjects\bgf2020\bgfadmin\obj\Debug\netcoreapp3.1\bgfadmin.dll
 C:\AtalanProjects\bgf2020\bgfadmin\obj\Debug\netcoreapp3.1\bgfadmin.pdb
 C:\AtalanProjects\bgf2020\bgfadmin\obj\Debug\netcoreapp3.1\bgfadmin.genruntimeconfig.cache
+C:\AtalanProjects\bgf2020\bgfadmin\bin\Debug\netcoreapp3.1\web.config
