@@ -12,9 +12,23 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using bgfadmin.Models;
 using Microsoft.AspNetCore.Identity;
-
+using Microsoft.AspNetCore.Http;
+using System.Text.Json;
 namespace bgfadmin
 {
+    public static class SessionExtensions
+    {
+        public static void Set<T>(this ISession session, string key, T value)
+        {
+            session.SetString(key, JsonSerializer.Serialize<T>(value));
+        }
+
+        public static T Get<T>(this ISession session, string key)
+        {
+            var value = session.GetString(key);
+            return value == null ? default(T) : JsonSerializer.Deserialize<T>(value);
+        }
+    }
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -27,6 +41,10 @@ namespace bgfadmin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
             services.AddControllers();
 
             services.AddDbContext<BgfAdminContext>(options =>
@@ -51,6 +69,8 @@ namespace bgfadmin
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSession();   // добавляем механизм работы с сессиями
+
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();       //!!!
@@ -58,6 +78,8 @@ namespace bgfadmin
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();  //!!!
+            //app.UseMvcWithDefaultRoute();
 
             app.UseEndpoints(endpoints =>
             {

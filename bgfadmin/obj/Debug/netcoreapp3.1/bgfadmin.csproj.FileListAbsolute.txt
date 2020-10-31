@@ -1,4 +1,3 @@
-C:\AtalanProjects\bgf2020\bgfadmin\obj\Debug\netcoreapp3.1\bgfadmin.csprojAssemblyReference.cache
 C:\AtalanProjects\bgf2020\bgfadmin\obj\Debug\netcoreapp3.1\bgfadmin.AssemblyInfoInputs.cache
 C:\AtalanProjects\bgf2020\bgfadmin\obj\Debug\netcoreapp3.1\bgfadmin.AssemblyInfo.cs
 C:\AtalanProjects\bgf2020\bgfadmin\obj\Debug\netcoreapp3.1\bgfadmin.csproj.CoreCompileInputs.cache
@@ -70,3 +69,4 @@ C:\AtalanProjects\bgf2020\bgfadmin\obj\Debug\netcoreapp3.1\bgfadmin.dll
 C:\AtalanProjects\bgf2020\bgfadmin\obj\Debug\netcoreapp3.1\bgfadmin.pdb
 C:\AtalanProjects\bgf2020\bgfadmin\obj\Debug\netcoreapp3.1\bgfadmin.genruntimeconfig.cache
 C:\AtalanProjects\bgf2020\bgfadmin\bin\Debug\netcoreapp3.1\web.config
+C:\AtalanProjects\bgf2020\bgfadmin\obj\Debug\netcoreapp3.1\bgfadmin.csprojAssemblyReference.cache

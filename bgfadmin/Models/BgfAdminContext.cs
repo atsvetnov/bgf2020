@@ -13,6 +13,7 @@ namespace bgfadmin.Models
     {
         public DbSet<Profile> Profile { get; set; }
         public DbSet<Sex> Sex { get; set; }
+        public DbSet<User> User { get; set; }
         public DbSet<TreeAdmin> TreeAdmin { get; set; }
         public DbSet<Profile_TreeAdmin> Profile_TreeAdmin { get; set; }
 

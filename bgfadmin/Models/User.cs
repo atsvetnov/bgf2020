@@ -27,7 +27,7 @@ namespace bgfadmin.Models
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         public int SexId { get; set; }
-        public DateTime BirthDate { get; set; }
+        public Nullable<DateTime> BirthDate { get; set; }
         public string BirthPlace { get; set; }
 
         public string Address1 { get; set; }
@@ -38,8 +38,30 @@ namespace bgfadmin.Models
 
         public bool Deactivated { get; set; }
 
-        public DateTime CreationDate { get; set; }
-        public DateTime LastModificationDate { get; set; }
-        public DateTime LastLoginDate { get; set; }
+        public Nullable<DateTime> CreationDate { get; set; }
+        public Nullable<DateTime> LastModificationDate { get; set; }
+        public Nullable<DateTime> LastLoginDate { get; set; }
+    }
+
+    public class UserShortInfo
+    {
+        public string Id { get; set; }
+        public int ProfileId { get; set; }
+        public string ProfileName { get; set; }
+        public int SexId { get; set; }
+        public string SexName { get; set; }
+        public string Email{ get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MiddleName { get; set; }
+        public DateTime BirthDate { get; set; }
+       
+       public string BirthPlace { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string Phone { get; set; }
+        public bool Deactivated { get; set; }
+
     }
 }
+

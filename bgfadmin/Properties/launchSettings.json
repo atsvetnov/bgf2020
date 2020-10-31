@@ -24,7 +24,7 @@
     "bgfadmin": {
       "commandName": "IIS",
       "launchBrowser": true,
-      "launchUrl": "Login",
+      "launchUrl": "Users",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
