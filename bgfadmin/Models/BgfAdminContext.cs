@@ -16,7 +16,7 @@ namespace bgfadmin.Models
         public DbSet<User> User { get; set; }
         public DbSet<TreeAdmin> TreeAdmin { get; set; }
         public DbSet<Profile_TreeAdmin> Profile_TreeAdmin { get; set; }
-
+        
         public BgfAdminContext(DbContextOptions<BgfAdminContext> options)
             : base(options)
         {

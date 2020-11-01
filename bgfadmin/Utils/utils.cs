@@ -11,6 +11,48 @@ namespace bgfadmin
 {
  public class Utils
     {
+
+        public static string GenerateAccessCode(int Seed)
+        {
+            string ABC = "ADEBCFRGHLXYMNIGKOPTUQRSVWZ3710458124395606723891579753";
+            Random rand = new Random(Seed);
+            return (ABC[rand.Next(0, 50)].ToString()
+                    + ABC[rand.Next(0, 50)].ToString()
+                    + ABC[rand.Next(0, 50)].ToString()
+                    + ABC[rand.Next(0, 50)].ToString()
+                    + ABC[rand.Next(0, 50)].ToString()
+                    + ABC[rand.Next(0, 50)].ToString()
+                    + ABC[rand.Next(0, 50)].ToString()
+                    + ABC[rand.Next(0, 50)].ToString()
+                    );
+        }
+        public static string GenerateURV(int Seed)
+        {
+            string ABC = "ADEBCFGHLXYMNIGKOPTUQASVWZ10458124395606723891579753";
+            Random rand = new Random(Seed);
+            return (ABC[rand.Next(0, 40)].ToString()
+                    + ABC[rand.Next(0, 50)].ToString()
+                    + ABC[rand.Next(0, 50)].ToString()
+                    + ABC[rand.Next(0, 50)].ToString()
+                    + ABC[rand.Next(0, 50)].ToString()
+                    + ABC[rand.Next(0, 50)].ToString()
+                    + ABC[rand.Next(0, 50)].ToString()
+                    + ABC[rand.Next(0, 50)].ToString()
+                    + ABC[rand.Next(0, 50)].ToString()
+                    );
+        }
+
+        public static string GenerateLoginPasswordRandomString(int Seed)
+        {
+            string abc = "abfghwxiclasdejnmyzopqktuv";
+            string ABC = "ADEBCFGHLXYMNIGKOPTUQASVWZ";
+            string digit = "10458124395606723891579753";
+            string spec = "~!@#&*($%^}{:<>?)_+|}{:<>?";
+            Random rand = new Random(Seed);
+            return (abc[rand.Next(0, 25)].ToString() + ABC[rand.Next(0, 25)].ToString() + digit[rand.Next(0, 25)].ToString() + spec[rand.Next(0, 25)].ToString()
+                    + abc[rand.Next(0, 25)].ToString() + ABC[rand.Next(0, 25)].ToString() + digit[rand.Next(0, 25)].ToString() + spec[rand.Next(0, 25)].ToString());
+        }
+
         public static bool IsValidEmail(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
@@ -34,11 +76,7 @@ namespace bgfadmin
                     return match.Groups[1].Value + domainName;
                 }
             }
-            catch (RegexMatchTimeoutException e)
-            {
-                return false;
-            }
-            catch (ArgumentException e)
+            catch
             {
                 return false;
             }

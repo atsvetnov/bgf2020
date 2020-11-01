@@ -20,6 +20,16 @@ namespace bgfadmin.Models
         public string Name { get; set; }
         public int OredrBy { get; set; }
     }
+    public class UserFieldsMetaInfo// : FieldsMetaInfo
+    {
+        [Key]
+        public string FieldName { get; set; }
+        public string Caption { get; set; }
+
+        public bool Mandatory { get; set; }
+
+    }
+
     public class User : IdentityUser
     {
         public int ProfileId { get; set; }
@@ -43,6 +53,7 @@ namespace bgfadmin.Models
         public Nullable<DateTime> LastLoginDate { get; set; }
     }
 
+
     public class UserShortInfo
     {
         public string Id { get; set; }
@@ -62,6 +73,49 @@ namespace bgfadmin.Models
         public string Phone { get; set; }
         public bool Deactivated { get; set; }
 
+
+        public static void CopyUserShortInfoToUser(UserShortInfo usersi, User user)
+        {
+            //user.Id = usersi.Id;
+            user.UserName = usersi.Email;
+            user.Email = usersi.Email;
+            user.ProfileId = usersi.ProfileId;
+            user.SexId = usersi.SexId;
+            user.LastName = usersi.LastName;
+            user.FirstName = usersi.FirstName;
+            user.MiddleName = usersi.MiddleName;
+            user.BirthDate = usersi.BirthDate;
+            user.BirthPlace = usersi.BirthPlace;
+            user.Phone = usersi.Phone;
+            user.Address1 = usersi.Address1;
+            user.Address2 = usersi.Address2;
+            user.Deactivated = usersi.Deactivated;
+        }
+
     }
+
+    public class UserShortInfoResult: UserShortInfo
+    {
+        public bool Success { get; set; }
+        public string Error { get; set; }
+
+    }
+
+
+    public class LoginData
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public bool RememberMe { get; set; }
+    }
+
+    public class LoginResult
+    {
+        public bool Success { get; set; }
+        public string Email { get; set; }
+        public string FullName { get; set; }
+        public string Error { get; set; }
+    }
+
 }
 
