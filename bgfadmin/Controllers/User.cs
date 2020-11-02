@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Data;
 using System.Reflection;
 using System.Collections;
+using System.Linq.Expressions;
 
 namespace bgfadmin.Controllers
 {
@@ -37,6 +38,9 @@ namespace bgfadmin.Controllers
 
         private UserFieldsMetaInfo[] FillUserFieldsMetaInfo()
         {
+            User user = HttpContext.Session.Get<User>("user");
+            if (user == null || user.ProfileId > 4) return null;//! to put real condition
+
             string sql = @"SELECT * FROM  FieldsMetaInfo WHERE Objectname='User'";
             DataTable dt = SqlHelper.GetDatatable(_context, sql);
 
@@ -54,6 +58,7 @@ namespace bgfadmin.Controllers
         [HttpGet]
         public IEnumerable<UserFieldsMetaInfo> Get()
         {
+            return null;
             return FillUserFieldsMetaInfo().ToArray();
         }
 
@@ -125,13 +130,17 @@ namespace bgfadmin.Controllers
             _signInManager = signInManager;
             _logger = logger;
 
+            if (Globals.Sex == null)
+                Globals.FillGlobals(_context);
+
         }
 
         [HttpGet]
         public IEnumerable<Sex> Get()
         {
-            var array = _context.Sex.ToArray();
-            return array;
+            User user = HttpContext.Session.Get<User>("user");
+            if (user == null || user.ProfileId > 4) return null;//! to put real condition
+            return _context.Sex.ToArray();
         }
 
     }
@@ -154,13 +163,16 @@ namespace bgfadmin.Controllers
             _signInManager = signInManager;
             _logger = logger;
 
+            if (Globals.Profile == null)
+                Globals.FillGlobals(_context);
         }
-      
+
         [HttpGet]
         public IEnumerable<Profile> Get()
         {
-            if (Globals.Profile == null)
-                Globals.FillGlobals(_context);
+            User user = HttpContext.Session.Get<User>("user");
+            if (user == null || user.ProfileId > 4) return null;//! to put real condition
+
             return Globals.Profile;
         }
 
@@ -184,13 +196,18 @@ namespace bgfadmin.Controllers
             _signInManager = signInManager;
             _logger = logger;
 
+            if (Globals.Tree == null)
+                Globals.FillGlobals(_context);
+
         }
 
         [HttpGet]
         public TreeAdmin[] Get()
         {
-           TreeAdmin[] userTree = HttpContext.Session.Get<TreeAdmin[]>("userTree");
-            if (userTree == null) return null;
+            User user = HttpContext.Session.Get<User>("user");
+            if (user == null || user.ProfileId > 4) return null;//! to put real condition
+
+            TreeAdmin[] userTree = HttpContext.Session.Get<TreeAdmin[]>("userTree");
 
             return userTree;
         }
@@ -198,7 +215,10 @@ namespace bgfadmin.Controllers
         [HttpGet("{parentId}")]
         public async Task<ActionResult<TreeAdmin[]>> GetTree(int parentId)
         {
-           TreeAdmin[] userTree = HttpContext.Session.Get<TreeAdmin[]>("userTree");
+            User user = HttpContext.Session.Get<User>("user");
+            if (user == null || user.ProfileId > 4) return null;//! to put real condition
+
+            TreeAdmin[] userTree = HttpContext.Session.Get<TreeAdmin[]>("userTree");
             if (userTree == null) return null;
            return userTree.Where(t => t.ParentId == parentId).OrderBy(t => t.OrderBy).ToArray(); 
         }
@@ -285,6 +305,9 @@ namespace bgfadmin.Controllers
         //public IEnumerable<User> Get()
         public JsonResult Get()
         {
+            User user = HttpContext.Session.Get<User>("user");
+            if (user == null || user.ProfileId > 4) return null;//! to put real condition
+
             string OrderBy = "LastName, FirstName";
             if (this.HttpContext.Request.Query.ContainsKey("OrderBy"))
                 OrderBy = this.HttpContext.Request.Query["OrderBy"];
@@ -418,21 +441,17 @@ namespace bgfadmin.Controllers
         [HttpGet]
         //public async IEnumerable<TreeAdmin> Get()
         public async Task<ActionResult<LoginResult>> Get()
-        //        public async IAsyncEnumerable<TreeAdmin> Get()
-        {
-            //            var user = await _userManager.FindByEmailAsync("atsvetnov@atalan.net");
-            //            await _signInManager.SignInAsync(user, false);
-            var sres = await _signInManager.PasswordSignInAsync("atsvetnov@atalan.net", "Ats$314271", false, false);
-            //bool signedIn = _signInManager.IsSignedIn(this.User);
-            bool signedIn = false;
-            if (User != null)
-                signedIn = User.Identity.IsAuthenticated;
-
+        { 
             LoginResult result = new LoginResult();
+            result.Success = false;
+            if (User != null && HttpContext.Session.Get<User>("user") != null)
+            {
+                User user = HttpContext.Session.Get<User>("user");
+                result.Success = User.Identity.IsAuthenticated;
+                result.Email = user.Email;
+                result.FullName = user.LastName + " " + user.FirstName;
+            }
             return result;
-            var array = _context.TreeAdmin.ToArray();
-            //return array;
-            //return new JsonResult("hello");
         }
 
 
@@ -469,6 +488,53 @@ namespace bgfadmin.Controllers
             return result;
         }
 
+    }
+
+
+    [ApiController]
+    [Route("[controller]")]
+    public class LogoutController : ControllerBase
+    {
+        private readonly ILogger<LoginController> _logger;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+
+        private BgfAdminContext _context;
+
+
+        public LogoutController(BgfAdminContext context, UserManager<User> userManager, SignInManager<User> signInManager, ILogger<LoginController> logger)
+        {
+            _context = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _logger = logger;
+
+        }
+
+
+        [HttpGet]
+        public async Task<ActionResult<LoginResult>> Get()
+        {
+            LoginResult result = new LoginResult();
+            result.Success = false;
+            try
+            {
+                if (HttpContext.Session.Get<User>("user") != null)
+                {
+                    User user = HttpContext.Session.Get<User>("user");
+                    result.Success = true;
+                    result.Email = user.Email;
+                    result.FullName = user.LastName + " " + user.FirstName;
+
+                    HttpContext.Session.Clear();
+                    //HttpContext.Session.Set<User>("user", null);
+                    //HttpContext.Session.Set<User>("userTree", null);
+                    await _signInManager.SignOutAsync();
+                }
+            }
+            catch { }
+            return result;
+        }
     }
 
 }

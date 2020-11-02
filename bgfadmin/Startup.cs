@@ -34,6 +34,7 @@ namespace bgfadmin
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            Globals.Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -41,7 +42,8 @@ namespace bgfadmin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            //services.AddSingleton<IConfiguration>(Configuration);
+
             services.AddDistributedMemoryCache();
             services.AddSession();
 

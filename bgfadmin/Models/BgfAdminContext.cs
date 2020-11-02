@@ -4,19 +4,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using System.Web;
 
 namespace bgfadmin.Models
 {
     public static class Globals
     {
+        public static IConfiguration Configuration;
+        public static Sex[] Sex = null;
         public static Profile[] Profile = null;
         public static TreeAdmin[] Tree = null;
         public static Hashtable profileTree = null; // ((ArrayList) profileTree[1]).Contains(3);
 
         public static void FillGlobals(BgfAdminContext context)
         {
+            
+            Globals.Sex = context.Sex.ToArray();
+
             Globals.Profile = context.Profile.Where(s => s.Id < 10).ToArray();
             Globals.Tree = context.TreeAdmin.ToArray();
 
@@ -53,10 +61,14 @@ namespace bgfadmin.Models
         public DbSet<User> User { get; set; }
         public DbSet<TreeAdmin> TreeAdmin { get; set; }
         public DbSet<Profile_TreeAdmin> Profile_TreeAdmin { get; set; }
-        
+
+//        private readonly IConfiguration Configuration;
+
         public BgfAdminContext(DbContextOptions<BgfAdminContext> options)
             : base(options)
         {
+            //HttpContext
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

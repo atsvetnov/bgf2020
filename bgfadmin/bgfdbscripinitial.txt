@@ -1,0 +1,534 @@
+USE [bgf2020]
+GO
+/****** Object:  Table [dbo].[AspNetUsers]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUsers](
+	[Id] [nvarchar](450) NOT NULL,
+	[UserName] [nvarchar](256) NULL,
+	[NormalizedUserName] [nvarchar](256) NULL,
+	[Email] [nvarchar](256) NULL,
+	[NormalizedEmail] [nvarchar](256) NULL,
+	[EmailConfirmed] [bit] NOT NULL,
+	[PasswordHash] [nvarchar](max) NULL,
+	[SecurityStamp] [nvarchar](max) NULL,
+	[ConcurrencyStamp] [nvarchar](max) NULL,
+	[PhoneNumber] [nvarchar](max) NULL,
+	[PhoneNumberConfirmed] [bit] NOT NULL,
+	[TwoFactorEnabled] [bit] NOT NULL,
+	[LockoutEnd] [datetimeoffset](7) NULL,
+	[LockoutEnabled] [bit] NOT NULL,
+	[AccessFailedCount] [int] NOT NULL,
+	[ProfileId] [int] NOT NULL,
+	[FirstName] [nvarchar](max) NULL,
+	[MiddleName] [nvarchar](max) NULL,
+	[LastName] [nvarchar](max) NULL,
+	[SexId] [int] NOT NULL,
+	[BirthDate] [datetime2](7) NULL,
+	[BirthPlace] [nvarchar](max) NULL,
+	[Address1] [nvarchar](max) NULL,
+	[Address2] [nvarchar](max) NULL,
+	[Phone] [nvarchar](max) NULL,
+	[Year] [int] NOT NULL,
+	[Deactivated] [bit] NOT NULL,
+	[CreationDate] [datetime2](7) NULL,
+	[LastModificationDate] [datetime2](7) NULL,
+	[LastLoginDate] [datetime2](7) NULL,
+ CONSTRAINT [PK_AspNetUsers] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+INSERT [dbo].[AspNetUsers] ([Id], [UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [SecurityStamp], [ConcurrencyStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEnd], [LockoutEnabled], [AccessFailedCount], [ProfileId], [FirstName], [MiddleName], [LastName], [SexId], [BirthDate], [BirthPlace], [Address1], [Address2], [Phone], [Year], [Deactivated], [CreationDate], [LastModificationDate], [LastLoginDate]) VALUES (N'b0be5274-a3cd-4424-ace6-279744ae48e1', N'alexander.tsvetnov@gmail.com', N'ALEXANDER.TSVETNOV@GMAIL.COM', N'alexander.tsvetnov@gmail.com', N'ALEXANDER.TSVETNOV@GMAIL.COM', 1, N'AQAAAAEAACcQAAAAEIVQ6jbaGvcdFKevk7f+RXgRbPcqOqXX8HJ6/m2CHSQyfBKIa1s+gP6lH9k3dqpMYw==', N'QGGULCMZGLLEK6K5SINZ63MZ6ABJT3RH', N'244bb420-a380-41f6-bf17-b5172f6e2b7a', NULL, 0, 0, NULL, 1, 0, 2, N'Sasha', NULL, N'Tsvetnovgmail', 1, NULL, NULL, NULL, NULL, NULL, 777, 1, CAST(0x070000000000BC410B AS DateTime2), NULL, NULL)
+INSERT [dbo].[AspNetUsers] ([Id], [UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [SecurityStamp], [ConcurrencyStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEnd], [LockoutEnabled], [AccessFailedCount], [ProfileId], [FirstName], [MiddleName], [LastName], [SexId], [BirthDate], [BirthPlace], [Address1], [Address2], [Phone], [Year], [Deactivated], [CreationDate], [LastModificationDate], [LastLoginDate]) VALUES (N'e193059d-740b-48e4-acc5-47ac33230fc5', N'atsvetnov@atalan.net', N'ATSVETNOV@ATALAN.NET', N'atsvetnov@atalan.net', N'ATSVETNOV@ATALAN.NET', 1, N'AQAAAAEAACcQAAAAEAM2/7tCee2pcnQRrC9plt+LP8wsFeqQcnuOyXTa94cdFQh5ZmYfsAH52OjBQpO5dA==', N'7PLFB2L37NYQ3BKCEZ6EYIBQ7LVOPFGY', N'f716fea1-1b22-4c4c-93db-619aba12d1c6', NULL, 0, 0, NULL, 1, 0, 1, N'Alexander', N'Vladimirovich', N'Tsvetnov', 1, CAST(0x07000000000098F10A AS DateTime2), NULL, NULL, NULL, NULL, 1964, 0, NULL, CAST(0x07F6DF494284C1410B AS DateTime2), NULL)
+/****** Object:  Table [dbo].[Student]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Student](
+	[Id] [nvarchar](450) NOT NULL,
+	[UserName] [nvarchar](256) NULL,
+	[NormalizedUserName] [nvarchar](256) NULL,
+	[Email] [nvarchar](256) NULL,
+	[NormalizedEmail] [nvarchar](256) NULL,
+	[EmailConfirmed] [bit] NOT NULL,
+	[PasswordHash] [nvarchar](max) NULL,
+	[SecurityStamp] [nvarchar](max) NULL,
+	[ConcurrencyStamp] [nvarchar](max) NULL,
+	[PhoneNumber] [nvarchar](max) NULL,
+	[PhoneNumberConfirmed] [bit] NOT NULL,
+	[TwoFactorEnabled] [bit] NOT NULL,
+	[LockoutEnd] [datetimeoffset](7) NULL,
+	[LockoutEnabled] [bit] NOT NULL,
+	[AccessFailedCount] [int] NOT NULL,
+	[FirstName] [nvarchar](max) NULL,
+	[MiddleName] [nvarchar](max) NULL,
+	[LastName] [nvarchar](max) NULL,
+	[Gender_ID] [int] NOT NULL,
+	[BirthDate] [datetime2](7) NOT NULL,
+	[BirthPlace] [nvarchar](max) NULL,
+	[Address1] [nvarchar](max) NULL,
+	[Address2] [nvarchar](max) NULL,
+	[Phone] [nvarchar](max) NULL,
+	[Year] [int] NOT NULL,
+	[StudentProfile_ID] [int] NOT NULL,
+	[Deactivated] [bit] NOT NULL,
+	[CreationDate] [datetime2](7) NOT NULL,
+	[LastModificationDate] [datetime2](7) NOT NULL,
+	[LastLoginDate] [datetime2](7) NOT NULL,
+ CONSTRAINT [PK_Student] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Sex]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Sex](
+	[Id] [int] NOT NULL,
+	[Name] [nvarchar](max) NULL,
+	[OredrBy] [int] NOT NULL,
+ CONSTRAINT [PK_Sex] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+INSERT [dbo].[Sex] ([Id], [Name], [OredrBy]) VALUES (1, N'Male', 1)
+INSERT [dbo].[Sex] ([Id], [Name], [OredrBy]) VALUES (2, N'Femail', 2)
+/****** Object:  Table [dbo].[Profile_TreeAdmin]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Profile_TreeAdmin](
+	[ProfileId] [int] NOT NULL,
+	[TreeId] [int] NOT NULL,
+ CONSTRAINT [PK_Profile_TreeAdmin] PRIMARY KEY CLUSTERED 
+(
+	[ProfileId] ASC,
+	[TreeId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+INSERT [dbo].[Profile_TreeAdmin] ([ProfileId], [TreeId]) VALUES (1, 1)
+INSERT [dbo].[Profile_TreeAdmin] ([ProfileId], [TreeId]) VALUES (1, 2)
+INSERT [dbo].[Profile_TreeAdmin] ([ProfileId], [TreeId]) VALUES (1, 3)
+INSERT [dbo].[Profile_TreeAdmin] ([ProfileId], [TreeId]) VALUES (1, 4)
+INSERT [dbo].[Profile_TreeAdmin] ([ProfileId], [TreeId]) VALUES (3, 1)
+INSERT [dbo].[Profile_TreeAdmin] ([ProfileId], [TreeId]) VALUES (3, 2)
+INSERT [dbo].[Profile_TreeAdmin] ([ProfileId], [TreeId]) VALUES (3, 3)
+INSERT [dbo].[Profile_TreeAdmin] ([ProfileId], [TreeId]) VALUES (3, 4)
+/****** Object:  Table [dbo].[Profile]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Profile](
+	[Id] [int] NOT NULL,
+	[Name] [nvarchar](max) NULL,
+	[OrderBy] [int] NOT NULL,
+	[BaseProfileId] [int] NOT NULL,
+ CONSTRAINT [PK_Profile] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+INSERT [dbo].[Profile] ([Id], [Name], [OrderBy], [BaseProfileId]) VALUES (1, N'Admin', 1, 1)
+INSERT [dbo].[Profile] ([Id], [Name], [OrderBy], [BaseProfileId]) VALUES (2, N'SuperAdmin', 2, 2)
+INSERT [dbo].[Profile] ([Id], [Name], [OrderBy], [BaseProfileId]) VALUES (3, N'SST Counselor', 3, 3)
+INSERT [dbo].[Profile] ([Id], [Name], [OrderBy], [BaseProfileId]) VALUES (4, N'SST Mission Manager', 4, 4)
+INSERT [dbo].[Profile] ([Id], [Name], [OrderBy], [BaseProfileId]) VALUES (5, N'Campus France Europe pole manager', 5, 5)
+INSERT [dbo].[Profile] ([Id], [Name], [OrderBy], [BaseProfileId]) VALUES (10, N'Student', 10, 10)
+INSERT [dbo].[Profile] ([Id], [Name], [OrderBy], [BaseProfileId]) VALUES (11, N'Guest', 11, 11)
+/****** Object:  Table [dbo].[FieldsMetaInfo]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[FieldsMetaInfo](
+	[ObjectName] [nvarchar](100) NOT NULL,
+	[FieldName] [nvarchar](300) NOT NULL,
+	[Caption] [nvarchar](300) NOT NULL,
+	[Tooltip] [nvarchar](max) NOT NULL,
+	[Mandatory] [bit] NOT NULL,
+ CONSTRAINT [PK_FieldsMetaInfo] PRIMARY KEY CLUSTERED 
+(
+	[ObjectName] ASC,
+	[FieldName] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+INSERT [dbo].[FieldsMetaInfo] ([ObjectName], [FieldName], [Caption], [Tooltip], [Mandatory]) VALUES (N'User', N'Email', N'Email', N'', 1)
+INSERT [dbo].[FieldsMetaInfo] ([ObjectName], [FieldName], [Caption], [Tooltip], [Mandatory]) VALUES (N'User', N'FirstName', N'First name', N'', 1)
+INSERT [dbo].[FieldsMetaInfo] ([ObjectName], [FieldName], [Caption], [Tooltip], [Mandatory]) VALUES (N'User', N'Id', N'ID', N'', 1)
+INSERT [dbo].[FieldsMetaInfo] ([ObjectName], [FieldName], [Caption], [Tooltip], [Mandatory]) VALUES (N'User', N'LastName', N'Last name', N'', 1)
+INSERT [dbo].[FieldsMetaInfo] ([ObjectName], [FieldName], [Caption], [Tooltip], [Mandatory]) VALUES (N'User', N'ProfileId', N'Profile', N'', 1)
+INSERT [dbo].[FieldsMetaInfo] ([ObjectName], [FieldName], [Caption], [Tooltip], [Mandatory]) VALUES (N'User', N'ProfileName', N'Profile', N'', 1)
+INSERT [dbo].[FieldsMetaInfo] ([ObjectName], [FieldName], [Caption], [Tooltip], [Mandatory]) VALUES (N'User', N'SexId', N'Sex', N'', 1)
+INSERT [dbo].[FieldsMetaInfo] ([ObjectName], [FieldName], [Caption], [Tooltip], [Mandatory]) VALUES (N'User', N'SexName', N'Sex', N'', 1)
+/****** Object:  Table [dbo].[AspNetRoles]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetRoles](
+	[Id] [nvarchar](450) NOT NULL,
+	[Name] [nvarchar](256) NULL,
+	[NormalizedName] [nvarchar](256) NULL,
+	[ConcurrencyStamp] [nvarchar](max) NULL,
+ CONSTRAINT [PK_AspNetRoles] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[StudentRoles]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StudentRoles](
+	[Id] [nvarchar](450) NOT NULL,
+	[Name] [nvarchar](256) NULL,
+	[NormalizedName] [nvarchar](256) NULL,
+	[ConcurrencyStamp] [nvarchar](max) NULL,
+ CONSTRAINT [PK_StudentRoles] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__EFMigrationsHistory](
+	[MigrationId] [nvarchar](150) NOT NULL,
+	[ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED 
+(
+	[MigrationId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20201027115528_Second', N'3.1.9')
+/****** Object:  Table [dbo].[TreeAdmin]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TreeAdmin](
+	[Id] [int] NOT NULL,
+	[Name] [nvarchar](max) NULL,
+	[Title] [nvarchar](max) NULL,
+	[Url] [nvarchar](max) NULL,
+	[ParentId] [int] NOT NULL,
+	[OrderBy] [int] NOT NULL,
+	[Visible] [bit] NOT NULL,
+ CONSTRAINT [PK_TreeAdmin] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+INSERT [dbo].[TreeAdmin] ([Id], [Name], [Title], [Url], [ParentId], [OrderBy], [Visible]) VALUES (1, N'Home', N'Home page', N'/home', 0, 1, 1)
+INSERT [dbo].[TreeAdmin] ([Id], [Name], [Title], [Url], [ParentId], [OrderBy], [Visible]) VALUES (2, N'Users & roles', N'', N'/Users', 0, 2, 1)
+INSERT [dbo].[TreeAdmin] ([Id], [Name], [Title], [Url], [ParentId], [OrderBy], [Visible]) VALUES (3, N'Users', N'User management', N'/Users', 2, 1, 1)
+INSERT [dbo].[TreeAdmin] ([Id], [Name], [Title], [Url], [ParentId], [OrderBy], [Visible]) VALUES (4, N'Profiles', N'Profile management', N'/Profiles', 2, 2, 1)
+/****** Object:  Table [dbo].[StudentUserTokens]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StudentUserTokens](
+	[UserId] [nvarchar](450) NOT NULL,
+	[LoginProvider] [nvarchar](450) NOT NULL,
+	[Name] [nvarchar](450) NOT NULL,
+	[Value] [nvarchar](max) NULL,
+ CONSTRAINT [PK_StudentUserTokens] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC,
+	[LoginProvider] ASC,
+	[Name] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[StudentUserRoles]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StudentUserRoles](
+	[UserId] [nvarchar](450) NOT NULL,
+	[RoleId] [nvarchar](450) NOT NULL,
+ CONSTRAINT [PK_StudentUserRoles] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC,
+	[RoleId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[StudentUserLogins]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StudentUserLogins](
+	[LoginProvider] [nvarchar](450) NOT NULL,
+	[ProviderKey] [nvarchar](450) NOT NULL,
+	[ProviderDisplayName] [nvarchar](max) NULL,
+	[UserId] [nvarchar](450) NOT NULL,
+ CONSTRAINT [PK_StudentUserLogins] PRIMARY KEY CLUSTERED 
+(
+	[LoginProvider] ASC,
+	[ProviderKey] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[StudentUserClaims]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StudentUserClaims](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [nvarchar](450) NOT NULL,
+	[ClaimType] [nvarchar](max) NULL,
+	[ClaimValue] [nvarchar](max) NULL,
+ CONSTRAINT [PK_StudentUserClaims] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[StudentRoleClaims]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StudentRoleClaims](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[RoleId] [nvarchar](450) NOT NULL,
+	[ClaimType] [nvarchar](max) NULL,
+	[ClaimValue] [nvarchar](max) NULL,
+ CONSTRAINT [PK_StudentRoleClaims] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[AspNetRoleClaims]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetRoleClaims](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[RoleId] [nvarchar](450) NOT NULL,
+	[ClaimType] [nvarchar](max) NULL,
+	[ClaimValue] [nvarchar](max) NULL,
+ CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[AspNetUserTokens]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserTokens](
+	[UserId] [nvarchar](450) NOT NULL,
+	[LoginProvider] [nvarchar](450) NOT NULL,
+	[Name] [nvarchar](450) NOT NULL,
+	[Value] [nvarchar](max) NULL,
+ CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC,
+	[LoginProvider] ASC,
+	[Name] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[AspNetUserRoles]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserRoles](
+	[UserId] [nvarchar](450) NOT NULL,
+	[RoleId] [nvarchar](450) NOT NULL,
+ CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC,
+	[RoleId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[AspNetUserLogins]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserLogins](
+	[LoginProvider] [nvarchar](450) NOT NULL,
+	[ProviderKey] [nvarchar](450) NOT NULL,
+	[ProviderDisplayName] [nvarchar](max) NULL,
+	[UserId] [nvarchar](450) NOT NULL,
+ CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY CLUSTERED 
+(
+	[LoginProvider] ASC,
+	[ProviderKey] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[AspNetUserClaims]    Script Date: 11/02/2020 14:15:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserClaims](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [nvarchar](450) NOT NULL,
+	[ClaimType] [nvarchar](max) NULL,
+	[ClaimValue] [nvarchar](max) NULL,
+ CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Default [DF_AspNetUsers_Deactivated]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[AspNetUsers] ADD  CONSTRAINT [DF_AspNetUsers_Deactivated]  DEFAULT ((0)) FOR [Deactivated]
+GO
+/****** Object:  Default [DF_AspNetUsers_CreationDate]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[AspNetUsers] ADD  CONSTRAINT [DF_AspNetUsers_CreationDate]  DEFAULT (getdate()) FOR [CreationDate]
+GO
+/****** Object:  Default [DF_FieldsMetaInfo_ObjectName]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[FieldsMetaInfo] ADD  CONSTRAINT [DF_FieldsMetaInfo_ObjectName]  DEFAULT ('') FOR [ObjectName]
+GO
+/****** Object:  Default [DF_FieldsMetaInfo_FieldName]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[FieldsMetaInfo] ADD  CONSTRAINT [DF_FieldsMetaInfo_FieldName]  DEFAULT ('') FOR [FieldName]
+GO
+/****** Object:  Default [DF_FieldsMetaInfo_Caption]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[FieldsMetaInfo] ADD  CONSTRAINT [DF_FieldsMetaInfo_Caption]  DEFAULT ('') FOR [Caption]
+GO
+/****** Object:  Default [DF_FieldsMetaInfo_Tooltip]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[FieldsMetaInfo] ADD  CONSTRAINT [DF_FieldsMetaInfo_Tooltip]  DEFAULT ('') FOR [Tooltip]
+GO
+/****** Object:  Default [DF_FieldsMetaInfo_Mandatory]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[FieldsMetaInfo] ADD  CONSTRAINT [DF_FieldsMetaInfo_Mandatory]  DEFAULT ((0)) FOR [Mandatory]
+GO
+/****** Object:  Default [DF_TreeAdmin_Name]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[TreeAdmin] ADD  CONSTRAINT [DF_TreeAdmin_Name]  DEFAULT ('') FOR [Name]
+GO
+/****** Object:  Default [DF_TreeAdmin_Title]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[TreeAdmin] ADD  CONSTRAINT [DF_TreeAdmin_Title]  DEFAULT ('') FOR [Title]
+GO
+/****** Object:  Default [DF_TreeAdmin_Url]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[TreeAdmin] ADD  CONSTRAINT [DF_TreeAdmin_Url]  DEFAULT ('') FOR [Url]
+GO
+/****** Object:  Default [DF_TreeAdmin_ParentId]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[TreeAdmin] ADD  CONSTRAINT [DF_TreeAdmin_ParentId]  DEFAULT ((0)) FOR [ParentId]
+GO
+/****** Object:  Default [DF_TreeAdmin_OrderBy]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[TreeAdmin] ADD  CONSTRAINT [DF_TreeAdmin_OrderBy]  DEFAULT ((0)) FOR [OrderBy]
+GO
+/****** Object:  Default [DF_TreeAdmin_Visible]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[TreeAdmin] ADD  CONSTRAINT [DF_TreeAdmin_Visible]  DEFAULT ((1)) FOR [Visible]
+GO
+/****** Object:  ForeignKey [FK_AspNetRoleClaims_AspNetRoles_RoleId]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[AspNetRoleClaims]  WITH CHECK ADD  CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY([RoleId])
+REFERENCES [dbo].[AspNetRoles] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetRoleClaims] CHECK CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId]
+GO
+/****** Object:  ForeignKey [FK_AspNetUserClaims_AspNetUsers_UserId]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[AspNetUserClaims]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserClaims] CHECK CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId]
+GO
+/****** Object:  ForeignKey [FK_AspNetUserLogins_AspNetUsers_UserId]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[AspNetUserLogins]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserLogins] CHECK CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId]
+GO
+/****** Object:  ForeignKey [FK_AspNetUserRoles_AspNetRoles_RoleId]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY([RoleId])
+REFERENCES [dbo].[AspNetRoles] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId]
+GO
+/****** Object:  ForeignKey [FK_AspNetUserRoles_AspNetUsers_UserId]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId]
+GO
+/****** Object:  ForeignKey [FK_AspNetUserTokens_AspNetUsers_UserId]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[AspNetUserTokens]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserTokens] CHECK CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId]
+GO
+/****** Object:  ForeignKey [FK_StudentRoleClaims_StudentRoles_RoleId]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[StudentRoleClaims]  WITH CHECK ADD  CONSTRAINT [FK_StudentRoleClaims_StudentRoles_RoleId] FOREIGN KEY([RoleId])
+REFERENCES [dbo].[StudentRoles] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[StudentRoleClaims] CHECK CONSTRAINT [FK_StudentRoleClaims_StudentRoles_RoleId]
+GO
+/****** Object:  ForeignKey [FK_StudentUserClaims_Student_UserId]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[StudentUserClaims]  WITH CHECK ADD  CONSTRAINT [FK_StudentUserClaims_Student_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[Student] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[StudentUserClaims] CHECK CONSTRAINT [FK_StudentUserClaims_Student_UserId]
+GO
+/****** Object:  ForeignKey [FK_StudentUserLogins_Student_UserId]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[StudentUserLogins]  WITH CHECK ADD  CONSTRAINT [FK_StudentUserLogins_Student_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[Student] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[StudentUserLogins] CHECK CONSTRAINT [FK_StudentUserLogins_Student_UserId]
+GO
+/****** Object:  ForeignKey [FK_StudentUserRoles_Student_UserId]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[StudentUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_StudentUserRoles_Student_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[Student] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[StudentUserRoles] CHECK CONSTRAINT [FK_StudentUserRoles_Student_UserId]
+GO
+/****** Object:  ForeignKey [FK_StudentUserRoles_StudentRoles_RoleId]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[StudentUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_StudentUserRoles_StudentRoles_RoleId] FOREIGN KEY([RoleId])
+REFERENCES [dbo].[StudentRoles] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[StudentUserRoles] CHECK CONSTRAINT [FK_StudentUserRoles_StudentRoles_RoleId]
+GO
+/****** Object:  ForeignKey [FK_StudentUserTokens_Student_UserId]    Script Date: 11/02/2020 14:15:48 ******/
+ALTER TABLE [dbo].[StudentUserTokens]  WITH CHECK ADD  CONSTRAINT [FK_StudentUserTokens_Student_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[Student] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[StudentUserTokens] CHECK CONSTRAINT [FK_StudentUserTokens_Student_UserId]
+GO

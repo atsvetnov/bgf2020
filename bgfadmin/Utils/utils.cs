@@ -7,6 +7,9 @@ using System.Text.RegularExpressions;
 using System.Data.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.Data.SqlClient;
+using bgfadmin.Models;
+
 namespace bgfadmin
 {
  public class Utils
@@ -97,6 +100,8 @@ namespace bgfadmin
     {
         public static DataTable GetDatatable(DbContext context, string query)
         {
+            //SqlConnection cnn = new SqlConnection(Globals.Configuration.GetConnectionString("BgfAdminContext"));
+
             var dbconnection = context.Database.GetDbConnection();
             try
             {

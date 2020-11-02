@@ -1,0 +1,21 @@
+method Get:
+http://nettest.atalan.net/bgfadmin/login
+checks if user is signed in and returns json like this: {"success":false,"email":null,"fullName":null,"error":null}
+
+method Post:
+http://nettest.atalan.net/bgfadmin/login
+json to sent:
+ {
+          "Email":"atsvetnov@atalan.net",
+          "Password":"Ats$314271",
+          "RememberMe":false
+        }
+signs in user and returns json:
+{
+    "success": true,
+    "email": "atsvetnov@atalan.net",
+    "fullName": "Tsvetnov Alexander",
+    "error": null
+}
+signeouts user by Get method:
+http://nettest.atalan.net/bgfadmin/logout
