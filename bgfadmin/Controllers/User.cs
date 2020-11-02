@@ -61,7 +61,7 @@ namespace bgfadmin.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    public class UserFieldCaptionsController : ControllerBase
+    public class UserFieldsCaptionController : ControllerBase
     {
         private readonly ILogger<LoginController> _logger;
         private readonly UserManager<User> _userManager;
@@ -70,7 +70,7 @@ namespace bgfadmin.Controllers
         private BgfAdminContext _context;
 
 
-        public UserFieldCaptionsController(BgfAdminContext context, UserManager<User> userManager, SignInManager<User> signInManager, ILogger<LoginController> logger)
+        public UserFieldsCaptionController(BgfAdminContext context, UserManager<User> userManager, SignInManager<User> signInManager, ILogger<LoginController> logger)
         {
             _context = context;
             _userManager = userManager;
@@ -109,7 +109,7 @@ namespace bgfadmin.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    public class SexesController : ControllerBase
+    public class SexController : ControllerBase
     {
         private readonly ILogger<LoginController> _logger;
         private readonly UserManager<User> _userManager;
@@ -118,7 +118,7 @@ namespace bgfadmin.Controllers
         private BgfAdminContext _context;
 
 
-        public SexesController(BgfAdminContext context, UserManager<User> userManager, SignInManager<User> signInManager, ILogger<LoginController> logger)
+        public SexController(BgfAdminContext context, UserManager<User> userManager, SignInManager<User> signInManager, ILogger<LoginController> logger)
         {
             _context = context;
             _userManager = userManager;
@@ -138,7 +138,7 @@ namespace bgfadmin.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    public class ProfilesController : ControllerBase
+    public class ProfileController : ControllerBase
     {
         private readonly ILogger<LoginController> _logger;
         private readonly UserManager<User> _userManager;
@@ -147,7 +147,7 @@ namespace bgfadmin.Controllers
         private BgfAdminContext _context;
 
 
-        public ProfilesController(BgfAdminContext context, UserManager<User> userManager, SignInManager<User> signInManager, ILogger<LoginController> logger)
+        public ProfileController(BgfAdminContext context, UserManager<User> userManager, SignInManager<User> signInManager, ILogger<LoginController> logger)
         {
             _context = context;
             _userManager = userManager;
@@ -159,16 +159,16 @@ namespace bgfadmin.Controllers
         [HttpGet]
         public IEnumerable<Profile> Get()
         {
-            var array = _context.Profile.ToArray();
-            return array;
+            if (Globals.Profile == null)
+                Globals.FillGlobals(_context);
+            return Globals.Profile;
         }
 
     }
 
- 
     [ApiController]
     [Route("[controller]")]
-    public class UsersController : ControllerBase
+    public class TreeController : ControllerBase
     {
         private readonly ILogger<LoginController> _logger;
         private readonly UserManager<User> _userManager;
@@ -177,7 +177,46 @@ namespace bgfadmin.Controllers
         private BgfAdminContext _context;
 
 
-        public UsersController(BgfAdminContext context, UserManager<User> userManager, SignInManager<User> signInManager, ILogger<LoginController> logger)
+        public TreeController(BgfAdminContext context, UserManager<User> userManager, SignInManager<User> signInManager, ILogger<LoginController> logger)
+        {
+            _context = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _logger = logger;
+
+        }
+
+        [HttpGet]
+        public TreeAdmin[] Get()
+        {
+           TreeAdmin[] userTree = HttpContext.Session.Get<TreeAdmin[]>("userTree");
+            if (userTree == null) return null;
+
+            return userTree;
+        }
+
+        [HttpGet("{parentId}")]
+        public async Task<ActionResult<TreeAdmin[]>> GetTree(int parentId)
+        {
+           TreeAdmin[] userTree = HttpContext.Session.Get<TreeAdmin[]>("userTree");
+            if (userTree == null) return null;
+           return userTree.Where(t => t.ParentId == parentId).OrderBy(t => t.OrderBy).ToArray(); 
+        }
+    }
+
+
+        [ApiController]
+    [Route("[controller]")]
+    public class UserController : ControllerBase
+    {
+        private readonly ILogger<LoginController> _logger;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+
+        private BgfAdminContext _context;
+
+
+        public UserController(BgfAdminContext context, UserManager<User> userManager, SignInManager<User> signInManager, ILogger<LoginController> logger)
         {
             _context = context;
             _userManager = userManager;
@@ -370,6 +409,8 @@ namespace bgfadmin.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            if (Globals.Tree == null)
+                Globals.FillGlobals(_context);
 
         }
 
@@ -409,10 +450,15 @@ namespace bgfadmin.Controllers
                 if (!sres.Succeeded) throw new Exception("Invalid Email or password");
                 var user = await _userManager.FindByEmailAsync(login.Email);
                 bool signedin = _signInManager.IsSignedIn(User);
-                HttpContext.Session.Set("User", user);
+
+                TreeAdmin[] userTree = Globals.GetProfileTree(user.ProfileId);
+                HttpContext.Session.Set("user", user);
+                HttpContext.Session.Set("userTree", userTree);
                 result.Success = true;
                 result.Email = user.Email;
                 result.FullName = user.LastName + " " + user.FirstName;
+
+                //Globals.Tree.Where(t => t.ParentId == 0).OrderBy(t => t.OrderBy);
             }
             catch(Exception exc)
             {
